@@ -18,7 +18,6 @@ import javax.ejb.Stateless;
  */
 @Entity
 @Table
-@Stateless
 public class DestinationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
