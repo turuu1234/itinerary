@@ -4,10 +4,32 @@
  */
 package mn.num.montoptours.itinerary.service;
 
+import jakarta.transaction.Transactional;
+import java.util.List;
+import mn.num.montoptours.itinerary.entity.ItineraryEntity;
+import mn.num.montoptours.itinerary.repository.ItineraryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author turmu
  */
+@Service
 public class ItineraryService {
+    private final ItineraryRepository itineraryRepository;
     
+    public ItineraryService(ItineraryRepository itineraryRepository) {
+        this.itineraryRepository = itineraryRepository;
+    }
+    
+    @Autowired
+    public List<ItineraryEntity> findAll() {
+        return itineraryRepository.findAll();
+    }
+    
+    @Transactional
+    public void saveItinerary(ItineraryEntity entity) {
+        itineraryRepository.save(entity);
+    } 
 }
